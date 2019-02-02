@@ -13,8 +13,13 @@ class CorsMiddleware
  */
   public function handle($request, Closure $next)
   {
+      if (env("APP_ENV") === "local") {
+        $allowedOrigin = "http://localhost:3000";
+      } else {
+        $allowedOrigin = "https://a2b.me.uk";
+      }
       $headers = [
-          'Access-Control-Allow-Origin'      => 'https://a2b.me.uk',
+          'Access-Control-Allow-Origin'      => $allowedOrigin,
           'Access-Control-Allow-Methods'     => 'POST, GET, OPTIONS, PUT, DELETE',
           'Access-Control-Allow-Credentials' => 'true',
           'Access-Control-Max-Age'           => '86400',
