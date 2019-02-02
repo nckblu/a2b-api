@@ -20,10 +20,10 @@ $router->get('/', function () {
     ]);
 });
 
-$router->get('api/location/{searchText}', [
+$router->get('location/{searchText}', [
     'uses' => 'LocationController@index',
 ]);
 
-$router->get('api/price-estimate', [
+$router->get('price-estimate', [
     'uses' => 'UberController@index',
 ]);
